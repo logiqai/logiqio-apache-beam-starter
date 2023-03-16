@@ -25,7 +25,7 @@ dependencies {
     implementation "org.slf4j:slf4j-jdk14:1.7.32"
 
     // The LOGIQ IO Connector
-    implementation 'com.github.logiqai:logiq-io:main-SNAPSHOT'
+    implementation 'com.github.logiqai:logiq-io:1.0.4'
 }
 
 test {

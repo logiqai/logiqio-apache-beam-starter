@@ -32,7 +32,7 @@ public class Main {
                 "INFO[2023-03-16T13:01:50.440538077+05:30] Running GC - MarkforGC: Total id's processed:0  File=gc.go Line=344"
         );
 
-        var local_endpoint = "http://localhost:9999/v1/json_batch";
+        var local_endpoint = "http://logflow.logiq.ai:9999/v1/json_batch";
         var ingest_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOltdLCJhdWQiOiJsb2dpcS1jbGllbnRzIiwianRpIjoiZGI2YmM2MTUtYjQ4OS00YTFjLWI3ZWEtYzMxZjhiMDYwMGNkIiwiaWF0IjoxNjc4OTU0NzA1LCJpc3MiOiJsb2dpcS1jb2ZmZWUtc2VydmVyIiwibmJmIjoxNjc4OTU0NzA1LCJzdWIiOiJrZXZpbmRAbG9naXEuYWkiLCJVaWQiOjEsInJvbGUiOiJhZG1pbiJ9.Xkw-GlS08Wzut-A5_hFtL6T92g2oVjY2dSYQfv6FtgjeCPPOTCPGkl9fygIDxZSUiJV70JfqXDlWm277xxRa-jsAfKDN9Lc5TV_MmLjxi6AAS_UQkbUhuqJSygrjC2WKH6S0CRX8wffeWfG0Vp5g6fFA6hNLibhg0RL-zFmcTr47c3CuXL9E88ygfLhUvCIEkVHLLMnE4DL5Dj3mB9yY8v2Iw3Wl-ZrVmyJXOsgdKo4iyf_PYHSNUTnB2WhvRp3Qe1dxFeXx9u8xNmDGzYyvSpwQEWSVM3l4QD5aLjIP53xF6ki_XT_KWr86oaTtYmEy69Nu8CSQFaLw3EohGBUwIg";
         pipeline.apply("Add Elements", logLines).apply(new Transformer()).apply(new LogiqIO.Write(local_endpoint, ingest_token)).apply(MapElements.via(new PrintElement()));
 

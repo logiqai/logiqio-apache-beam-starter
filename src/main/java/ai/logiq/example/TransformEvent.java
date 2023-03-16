@@ -15,7 +15,15 @@ class Config {
 public class TransformEvent extends DoFn<String, LogiqEvent> {
     @ProcessElement
     public void processElement(@Element String element, OutputReceiver<LogiqEvent> receiver) {
-        LogiqEvent event = new LogiqEvent(Config.namespace, element, (int) Instant.now().getEpochSecond(), Config.host, String.valueOf(element.length()), Config.appName, Config.clusterID);
+        LogiqEvent event = new LogiqEvent()
+                .withAppName(Config.appName)
+                .withTimestamp(0)
+                .withClusterId(Config.clusterID)
+                .withHost(Config.host)
+                .withAppName(Config.appName)
+                .withNamespace(Config.namespace)
+                .withMessage(element);
+
         receiver.output(event);
     }
 }
